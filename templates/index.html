@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{{ url_for('index') }}" method="POST">
+    <div class="mb-3">
+        <label for="exampleInputLender" class="form-label">Lender</label>
+        <input type="text" class="form-control" id="exampleInputLender" placeholder="Name" name="lender"
+               value="{{ request.form.get('lender', '') }}">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputAmount" class="form-label">Amount</label>
+        <input type="text" class="form-control" id="exampleInputAmount" placeholder="$" name="amount"
+               value="{{ request.form.get('amount', '') }}">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputBorrower" class="form-label">Borrower</label>
+        <input type="text" class="form-control" id="exampleInputBorrower" placeholder="Name" name="borrower"
+               value="{{ request.form.get('borrower', '') }}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
+
+{% block checking %}
+
+    {% for res in results %}
+        <div class="result">
+
+            Block {{ res['Block'] }} : {{ res['result'] }}
+
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
